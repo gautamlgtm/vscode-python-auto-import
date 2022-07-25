@@ -18,7 +18,11 @@ def get_base_dir(path: str) -> str | None:
             return str(p)
 
         # Root of a python project
-        if (p / "requirements.txt").exists():
+        if (
+            (p / "requirements.txt").exists()
+            or (p / "setup.py").exists()
+            or (p / "pyproject.toml").exists()
+        ):
             return str(p)
 
         p = p.parent
